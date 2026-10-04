@@ -13,7 +13,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agent_guardrails import event
+from post_no_bills import event
 
 from . import yamlsubset
 from .support import ROOT, TOKEN, RemoteTestCase, git_environment, runner_inputs
@@ -37,6 +37,9 @@ def _step(action: dict) -> dict:
 class ActionTests(unittest.TestCase):
     def setUp(self) -> None:
         self.action = _load(ROOT / "action.yml")
+
+    def test_is_published_as_post_no_bills(self) -> None:
+        self.assertEqual(self.action["name"], "Post No Bills")
 
     def test_declares_the_inputs_with_literal_safe_defaults(self) -> None:
         inputs = self.action["inputs"]
@@ -201,7 +204,7 @@ class CompositeStepTests(RemoteTestCase):
         result, events = self._run_step({"require-model-attributionn": "true"}, body="No line")
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertIn(
-            "::error title=agent-guardrails::unknown input(s): 'require-model-attributionn'",
+            "::error title=post-no-bills::unknown input(s): 'require-model-attributionn'",
             result.stdout,
         )
         self.assertEqual([record for kind, record in events if kind == "git"], [])
@@ -253,7 +256,7 @@ class DogfoodCallerTests(unittest.TestCase):
     """Ported from test_workflow_checks_attribution_in_required_job."""
 
     def test_workflow_checks_attribution_in_required_job(self) -> None:
-        workflow = _load(_WORKFLOWS / "agent-guardrails.yml")
+        workflow = _load(_WORKFLOWS / "post-no-bills.yml")
         job = workflow["jobs"]["check-bot-coauthors"]
         checkout, check = job["steps"]
 

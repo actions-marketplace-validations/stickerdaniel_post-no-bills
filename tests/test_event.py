@@ -6,8 +6,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agent_guardrails import event
-from agent_guardrails.main import main
+from post_no_bills import event
+from post_no_bills.main import main
 
 from .support import TOKEN, foreign_commands, runner_inputs
 
@@ -277,7 +277,7 @@ class InputTests(unittest.TestCase):
         self.assertEqual(main(environ, stdout=stdout), 1)
         output = stdout.getvalue()
         self.assertEqual(foreign_commands(output), [])
-        self.assertIn("::error title=agent-guardrails::input hidden-unicode must be", output)
+        self.assertIn("::error title=post-no-bills::input hidden-unicode must be", output)
         self.assertNotIn("z" * 81, output)
 
     def test_malformed_transport_fails(self) -> None:
