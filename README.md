@@ -9,11 +9,11 @@ Agents write the code, people sign it. Models are disclosed in the PR body.
 <p>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/hero-dark.png">
-  <img alt="Left, agent trailers merged: the Contributors list shows 4, stickerdaniel, claude, cursoragent and codex, after commit messages with Co-authored-by trailers for Claude, Cursor Agent and Codex. Right, blocked by Post No Bills: the list shows only stickerdaniel, and the PR body ends with Generated with Claude Opus 5.5." src="docs/hero-light.png" width="800">
+  <img alt="Left, agent trailers merged: the Contributors list shows 4, stickerdaniel, claude, cursoragent and codex, after commit messages with Co-authored-by trailers for Claude, Cursor Agent and Codex. Right, blocked by Post No Bills: the list shows only stickerdaniel, and the PR body ends with Generated with Claude Opus 5.5 for implementation and GPT-6 Pro for review in Claude Code via T3 Code." src="docs/hero-light.png" width="800">
 </picture>
 </p>
 
-A coding agent that adds `Co-authored-by: Claude <noreply@anthropic.com>` to a commit signs your repository. Once that trailer reaches your default branch, the agent's account can join your Contributors list, next to the people who wrote the code. Post No Bills is a GitHub Action that fails such pull requests, and asks for a one-line model disclosure in the PR body instead.
+Coding agents love to add `Co-authored-by:` trailers to your commit messages. Once one reaches your default branch, your Contributors list shows the agent's logo, free advertising for its vendor. Put your contributors first. Post No Bills is a GitHub Action that fails such pull requests and asks for a one-line model disclosure in the PR body instead, so you still see which models and tools your community uses.
 
 ## What it catches
 
